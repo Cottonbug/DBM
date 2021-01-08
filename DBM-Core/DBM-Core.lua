@@ -59,9 +59,9 @@ f:SetScript("OnUpdate", fCLFix)
 -------------------------------
 DBM = {
 	Revision = ("$Revision: 5030 $"):sub(12, -3),
-	Version = "5.03",
-	DisplayVersion = "5.03 by pipez", -- the string that is shown as version
-	ReleaseRevision = 5030 -- the revision of the latest stable version that is available (for /dbm ver2)
+	Version = "5.003",
+	DisplayVersion = "5.003 by Gomi/House", -- the string that is shown as version
+	ReleaseRevision = 50030 -- the revision of the latest stable version that is available (for /dbm ver2)
 }
 
 DBM_SavedOptions = {}
