@@ -49,7 +49,7 @@ local timerMysticBuffet			= mod:NewBuffActiveTimer(8, 70128)
 local timerNextMysticBuffet		= mod:NewNextTimer(6, 70128)
 local timerMysticAchieve		= mod:NewAchievementTimer(30, 4620, "AchievementMystic")
 
-local berserkTimer				= mod:NewBerserkTimer(600)
+local berserkTimer				= mod:NewBerserkTimer(420)
 local berserkTimerFrostmourne		= mod:NewTimer(390, "Berserk Timer Frostmourne", nil, false)
 
 local soundBlisteringCold = mod:NewSound(70123)
