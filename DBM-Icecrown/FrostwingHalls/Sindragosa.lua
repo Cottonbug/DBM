@@ -50,6 +50,7 @@ local timerNextMysticBuffet		= mod:NewNextTimer(6, 70128)
 local timerMysticAchieve		= mod:NewAchievementTimer(30, 4620, "AchievementMystic")
 
 local berserkTimer				= mod:NewBerserkTimer(600)
+local berserkTimerFrostmourne		= mod:NewTimer(390, "Berserk Timer Frostmourne", nil, false)
 
 local soundBlisteringCold = mod:NewSound(70123)
 mod:AddBoolOption("SetIconOnFrostBeacon", true)
@@ -101,6 +102,7 @@ end
 
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)
+	berserkTimerFrostmourne:Start()
 	timerNextAirphase:Start(50-delay)
 	timerNextBlisteringCold:Start(33-delay)
 	warned_P2 = false
@@ -111,33 +113,12 @@ function mod:OnCombatStart(delay)
 	unchainedIcons = 7
 	self.vb.phase = 1
 	activeBeacons = false
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Show(20, GetRaidTargetIndex) -- Edit to fix auto showing range check with heroic mode values
+	if mod:IsDifficulty("heroic10") or mod:IsDifficulty("heroic25") then
+		DBM.RangeCheck:Show(20, GetRaidTargetIndex)
+	else
+		DBM.RangeCheck:Show(10, GetRaidTargetIndex)
 	end
 end
-
---[[ Original CombatStart Config
-function mod:OnCombatStart(delay)
-	berserkTimer:Start(-delay)
-	timerNextAirphase:Start(50-delay)
-	timerNextBlisteringCold:Start(33-delay)
-	warned_P2 = false
-	warnedfailed = false
-	table.wipe(beaconTargets)
-	table.wipe(beaconIconTargets)
-	table.wipe(unchainedTargets)
-	unchainedIcons = 7
-	phase = 1
-	activeBeacons = false
-	if self.Options.RangeFrame then
-		if mod:IsDifficulty("heroic10") or mod:IsDifficulty("heroic25") then
-			DBM.RangeCheck:Show(20, GetRaidTargetIndex)
-		else
-			DBM.RangeCheck:Show(10, GetRaidTargetIndex)
-		end
-	end
-end
-]]--
 
 function mod:OnCombatEnd()
 	if self.Options.RangeFrame then
@@ -150,7 +131,7 @@ function mod:SPELL_CAST_START(args)
 		warnFrostBreath:Show()
 		timerNextFrostBreath:Start()
 	end
-end	
+end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(70126) then
@@ -245,7 +226,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerNextBlisteringCold:Start()
 		soundBlisteringCold:Play()
 	end
-end	
+end
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpellID(69762) then
@@ -298,7 +279,7 @@ end
 function mod:UNIT_HEALTH(uId)
 	if not warned_P2 and self:GetUnitCreatureId(uId) == 36853 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.38 then
 		warned_P2 = true
-		warnPhase2soon:Show()	
+		warnPhase2soon:Show()
 	end
 end
 

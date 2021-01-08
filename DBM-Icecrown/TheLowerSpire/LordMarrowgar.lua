@@ -29,7 +29,8 @@ local timerWhirlwind		= mod:NewBuffActiveTimer(31, 69076)
 local timerWhirlwindStart	= mod:NewTimer(3, "Whirlwind starts in...")
 local timerBoned			= mod:NewAchievementTimer(8, 4610, "AchievementBoned")
 
-local berserkTimer			= mod:NewBerserkTimer(600)
+local berserkTimer					= mod:NewBerserkTimer(600)
+local berserkTimerFrostmourne		= mod:NewTimer(420, "Berserk Timer Frostmourne", nil, false)
 
 local soundWhirlwind = mod:NewSound(69076)
 mod:AddBoolOption("SetIconOnImpale", true)
@@ -48,11 +49,12 @@ function mod:OnCombatStart(delay)
 	timerWhirlwindCD:Start(45-delay)
 	timerBoneSpike:Start(15-delay)
 	berserkTimer:Start(-delay)
+	berserkTimerFrostmourne:Start()
 	table.wipe(impaleTargets)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(69076) then			-- Bone Storm (Whirlwind)
+	if args:IsSpellID(69076) then		-- Bone Storm (Whirlwind)
 		specWarnWhirlwind:Show()
 		timerWhirlwindCD:Start()
 		preWarnWhirlwind:Schedule(85)
@@ -105,16 +107,17 @@ end
 ]]
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(69057, 70826, 72088, 72089) then				-- Bone Spike Graveyard
+	if args:IsSpellID(69057, 70826, 72088, 72089) then		-- Bone Spike Graveyard
 		warnBoneSpike:Show()
 		timerBoneSpike:Start()
 		timerBoneSpikeUp:Start()
+		PlaySoundFile("Interface\\Addons\\DBM-Core\\sounds\\castingbonespikes.mp3")
 	end
 end
 
 --[[
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(69057, 70826, 72088, 72089) then				-- Bone Spike Graveyard
+	if args:IsSpellID(69057, 70826, 72088, 72089) then		-- Bone Spike Graveyard
 		warnBoneSpike:Show()
 		timerBoneSpike:Start()
 	end
@@ -129,7 +132,7 @@ function mod:SPELL_PERIODIC_DAMAGE(args)
 end
 
 function mod:SPELL_SUMMON(args)
-	if args:IsSpellID(69062, 72669, 72670) then						-- Impale
+	if args:IsSpellID(69062, 72669, 72670) then		-- Impale
 		impaleTargets[#impaleTargets + 1] = args.sourceName
 		timerBoned:Start()
 		if self.Options.SetIconOnImpale then
