@@ -135,10 +135,10 @@ function mod:WormsEmerge()
 	if not AcidmawDead then
 		if DreadscaleActive then
 			timerSweepCD:Start(16)
-			timerParalyticSprayCD:Start(15)			
+			timerParalyticSprayCD:Start(15)
 		else
 			timerSlimePoolCD:Start(14)
-			timerParalyticBiteCD:Start(5)			
+			timerParalyticBiteCD:Start(5)
 			timerAcidicSpewCD:Start(10)
 		end
 	end
@@ -151,7 +151,7 @@ function mod:WormsEmerge()
 			timerSweepCD:Start(16)
 			timerBurningSprayCD:Start(17)
 		end
-	end	
+	end
 	self:ScheduleMethod(45, "WormsSubmerge")
 end
 
