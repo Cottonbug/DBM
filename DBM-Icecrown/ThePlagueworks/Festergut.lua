@@ -93,7 +93,7 @@ function mod:OnCombatStart(delay)
 	lastGoo = 0
 	warnedfailed = false
 	if self.Options.RangeFrame then
-		DBM.RangeCheck:Show(10)
+		DBM.RangeCheck:Show(12)
 	end
 	timerGooCD:Start(13-delay)
 end

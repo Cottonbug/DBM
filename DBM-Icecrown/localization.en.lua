@@ -214,7 +214,7 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	TimerCombatStart		= "Show time for start of combat",
 	WarnFrenzySoon			= "Show pre-warning for Frenzy (at ~33%)",
-	BoilingBloodIcons	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(72441),
+	BoilingBloodIcons		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(72441),
 	RangeFrame				= "Show range frame (12 yards)",
 	RunePowerFrame			= "Show Boss Health + $spell:72371 bar",
 	BeastIcons				= "Set icons on Blood Beasts"
@@ -242,7 +242,7 @@ L:SetWarningLocalization{
 
 L:SetOptionLocalization{
 	InhaledBlight		= "Show warning for $spell:71912",
-	RangeFrame			= "Show range frame (8 yards)",
+	RangeFrame			= "Show range frame (12 yards)",
 	WarnGastricBloat	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(72551, GetSpellInfo(72551) or "unknown"),	
 	SetIconOnGasSpore	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(69279),
 	AnnounceSporeIcons	= "Announce icons for $spell:69279 targets to raid chat\n(requires announce to be enabled and promoted status)",
@@ -250,7 +250,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	SporeSet	= "Gas Spore icon {rt%d} set on %s",
+	SporeSet			= "Gas Spore icon {rt%d} set on %s",
 	AchievementFailed	= ">> ACHIEVEMENT FAILED: %s has %d stacks of Inoculated <<"
 }
 
@@ -461,20 +461,20 @@ L:SetWarningLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnAirphase			= "Announce air phase",
-	WarnGroundphaseSoon		= "Show pre-warning for ground phase",
-	WarnPhase2soon			= "Show pre-warning for Phase 2 (at ~38%)",
-	TimerNextAirphase		= "Show timer for next air phase",
-	TimerNextGroundphase	= "Show timer for next ground phase",
-	WarnInstability			= "Show warning for your $spell:69766 stacks",
-	WarnChilledtotheBone	= "Show warning for your $spell:70106 stacks",
-	WarnMysticBuffet		= "Show warning for your $spell:70128 stacks",
-	AnnounceFrostBeaconIcons= "Announce icons for $spell:70126 targets to raid chat\n(requires announce to be enabled and promoted status)",
-	SetIconOnFrostBeacon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(70126),
-	SetIconOnUnchainedMagic	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(69762),
-	ClearIconsOnAirphase	= "Clear all icons before air phase",
-	AchievementCheck		= "Announce 'All You Can Eat' achievement warnings to raid\n(requires promoted status)",
-	RangeFrame				= "Show raid icon based range frame (10 normal, 20 heroic)"
+	WarnAirphase				= "Announce air phase",
+	WarnGroundphaseSoon			= "Show pre-warning for ground phase",
+	WarnPhase2soon				= "Show pre-warning for Phase 2 (at ~38%)",
+	TimerNextAirphase			= "Show timer for next air phase",
+	TimerNextGroundphase		= "Show timer for next ground phase",
+	WarnInstability				= "Show warning for your $spell:69766 stacks",
+	WarnChilledtotheBone		= "Show warning for your $spell:70106 stacks",
+	WarnMysticBuffet			= "Show warning for your $spell:70128 stacks",
+	AnnounceFrostBeaconIcons	= "Announce icons for $spell:70126 targets to raid chat\n(requires announce to be enabled and promoted status)",
+	SetIconOnFrostBeacon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(70126),
+	SetIconOnUnchainedMagic		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(69762),
+	ClearIconsOnAirphase		= "Clear all icons before air phase",
+	AchievementCheck			= "Announce 'All You Can Eat' achievement warnings to raid\n(requires promoted status)",
+	RangeFrame					= "Show raid icon based range frame (10 normal, 20 heroic)"
 }
 
 L:SetMiscLocalization{
