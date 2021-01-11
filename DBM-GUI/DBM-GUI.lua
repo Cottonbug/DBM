@@ -38,7 +38,7 @@
 --
 --
 
-local revision =("$Revision: 5010 $"):sub(12, -3) 
+local revision =("$Revision: 5010 $"):sub(12, -3)
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -57,12 +57,12 @@ function DBM_GUI:ShowHide(forceshow)
 	elseif forceshow == false then
 		DBM_GUI_OptionsFrame:Hide()
 
-	else 
-		if DBM_GUI_OptionsFrame:IsShown() then 
-			DBM_GUI_OptionsFrame:Hide() 
-		else 
+	else
+		if DBM_GUI_OptionsFrame:IsShown() then
+			DBM_GUI_OptionsFrame:Hide()
+		else
 			self:UpdateModList()
-			DBM_GUI_OptionsFrame:Show() 
+			DBM_GUI_OptionsFrame:Show()
 		end
 	end
 end
@@ -82,7 +82,7 @@ do
 		panel:SetWidth(DBM_GUI_OptionsFramePanelContainerFOV:GetWidth())
 		panel:SetHeight(DBM_GUI_OptionsFramePanelContainerFOV:GetHeight()) 
 		panel:SetPoint("TOPLEFT", DBM_GUI_OptionsFramePanelContainer, "TOPLEFT")
-	
+
 		panel.name = FrameName
 		panel.showsub = (showsub or showsub == nil)
 
@@ -93,7 +93,7 @@ do
 			panel.sortid = myid
 		end
 		panel:Hide()
-	
+
 		if FrameTyp == "option" or FrameTyp == 2 then
 			panel.categoryid = DBM_GUI_Options:CreateCategory(panel, self and self.frame and self.frame.name)
 			panel.FrameTyp = 2
@@ -101,7 +101,7 @@ do
 			panel.categoryid = DBM_GUI_Bosses:CreateCategory(panel, self and self.frame and self.frame.name)
 			panel.FrameTyp = 1
 		end
-	
+
 		self:SetLastObj(panel)
 		self.panels = self.panels or {}
 		table.insert(self.panels, {frame = panel, parent = self, framename = FrameTitle..self:GetCurrentID()})
@@ -145,7 +145,7 @@ do
 			area:SetWidth(width or self.frame:GetWidth()-12)
 		end
 		area:SetHeight(height or self.frame:GetHeight()-10)
-		
+
 		if autoplace then
 			if select('#', self.frame:GetChildren()) == 1 then
 				area:SetPoint('TOPLEFT', self.frame, 5, -17)
@@ -153,7 +153,7 @@ do
 				area:SetPoint('TOPLEFT', select(-2, self.frame:GetChildren()) or self.frame, "BOTTOMLEFT", 0, -17)
 			end
 		end
-	
+
 		self:SetLastObj(area)
 		self.areas = self.areas or {}
 		table.insert(self.areas, {frame = area, parent = self, framename = FrameTitle..self:GetCurrentID()})
@@ -175,7 +175,7 @@ do
 	end
 end
 
-do 
+do
 	local FrameNames = {}
 	function DBM_GUI:AddFrame(FrameName)
 		table.insert(FrameNames, FrameName)
@@ -193,7 +193,7 @@ end
 
 do
 	local framecount = 0
-	function DBM_GUI:GetNewID() 
+	function DBM_GUI:GetNewID()
 		framecount = framecount + 1
 		return framecount
 	end
@@ -210,7 +210,7 @@ end
 --  arg1 = text right to the CheckBox
 --  arg2 = autoplaced (true or nil/false)
 --  arg3 = text on left side
---  arg4 = DBM.Options[arg4] 
+--  arg4 = DBM.Options[arg4]
 --  arg5 = DBM.Bars:SetOption(arg5, ...)
 --
 do
@@ -220,7 +220,7 @@ do
 		local hitBoxSize = -100 -- default value from the default UI template
 		return x - fX < hitBoxSize
 	end
-	
+
 	local currActiveButton
 	local updateFrame = CreateFrame("Frame")
 	local function onUpdate(self, elapsed)
@@ -237,7 +237,7 @@ do
 		x, y = x / scale, y / scale
 		GameTooltip:SetPoint("BOTTOMLEFT", nil, "BOTTOMLEFT", x + 5, y + 2)
 	end
-		
+
 	local function onHyperlinkClick(self, data, link)
 		if IsShiftKeyDown() then
 			local msg = link:gsub("|h(.*)|h", "|h[%1]|h")
